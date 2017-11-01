@@ -1,0 +1,6 @@
+site_name: Squishy
+pages:
+- Home: index.md
+site_author: Daniel 'CosmicDan' Connolly
+repo_url: https://github.com/cosmicdan/Squishy/
+theme: readthedocs
