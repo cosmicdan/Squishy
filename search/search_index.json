@@ -2,18 +2,13 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Squishy\n\n\nPre-Alpha Notice\n\n\nSquishy is in active prototype development and is not yet very functional. Please do check back soon!\n\n\nAbout\n\n\nSquishy is a tool and scripting language for structured text transformation. The syntax is based on \nsemantic queries\n - hence the name.\n\n\nIt is designed to be a more flexible and powerful alternative to the classic patch/diff tools. Rather than relying on surrounding context and literally modifying text, Squishy scripts (or \"squishes\") transform through a virtual cursor that is guided with logical instructions. It's essentially a smarter patch tool, but obviously a bit heavier as a result - so it isn't necessarily superior.\n\n\nThe inspiration behind Squishy was to create more generic and resilient patches to smali (decompiled Dalvik bytecode) for Android firmware modifications.", 
-            "title": "Home"
+            "text": "Squishy\n\n\n\n\nWarning\n\n\nSquishy is in active prototype development and is not yet very functional. Please do check back soon!\n\n\n\n\nAbout\n\n\nSquishy is a tool and scripting language for structured text transformation. The syntax is based on \nsemantic queries\n - hence the name.\n\n\nIt is designed to be a more flexible and powerful alternative to the classic patch/diff tools. Rather than relying on surrounding context and literally modifying text, Squishy scripts (or \"squishes\") transform through a virtual cursor that is guided with logical instructions. It's essentially a smarter patch tool, but obviously a bit heavier as a result - so it isn't necessarily superior.\n\n\nThe inspiration behind Squishy was to create more generic and resilient patches to smali (decompiled Dalvik bytecode) for Android firmware modifications.", 
+            "title": "About"
         }, 
         {
             "location": "/#squishy", 
-            "text": "", 
+            "text": "Warning  Squishy is in active prototype development and is not yet very functional. Please do check back soon!", 
             "title": "Squishy"
-        }, 
-        {
-            "location": "/#pre-alpha-notice", 
-            "text": "Squishy is in active prototype development and is not yet very functional. Please do check back soon!", 
-            "title": "Pre-Alpha Notice"
         }, 
         {
             "location": "/#about", 
@@ -21,8 +16,28 @@
             "title": "About"
         }, 
         {
+            "location": "/basics/writing-scripts/", 
+            "text": "Scripts\n\n\nA Squishy script is known as a \"Squish\". Writing Squishes is performed in any text editor, and the syntax is loosely inspired by SQL.", 
+            "title": "Writing Scripts"
+        }, 
+        {
+            "location": "/basics/writing-scripts/#scripts", 
+            "text": "A Squishy script is known as a \"Squish\". Writing Squishes is performed in any text editor, and the syntax is loosely inspired by SQL.", 
+            "title": "Scripts"
+        }, 
+        {
+            "location": "/script-reference/", 
+            "text": "Script Reference\n\n\nThis section is a reference for the Squishy script language. Each entry can include usage, a description and example(s).\n\n\nFor documentation on the general syntax, refer to the Scripts subsection under Basics.", 
+            "title": "Script Reference"
+        }, 
+        {
+            "location": "/script-reference/#script-reference", 
+            "text": "This section is a reference for the Squishy script language. Each entry can include usage, a description and example(s).  For documentation on the general syntax, refer to the Scripts subsection under Basics.", 
+            "title": "Script Reference"
+        }, 
+        {
             "location": "/script-reference/flow-control/try/", 
-            "text": "TRY\n\n\nUsage\n\n\nTRY\n \nSTATEMENT;\n\n\nTRY\n \nSTATEMENT; \nELSE\n \nSTATEMENT; *[\nELSE\n \nSTATEMENT;\n] \nEND\n*\n\n\nDescription\n\n\nThe \nTRY \nstatement can be used to either specify an optional, non-critical \nSTATEMENT\n or to specify a series of alternative \nSTATEMENT(s)\n to perform should the previous fail.\n\n\nThe first usage form is a simple prefix to perform optional statements. If \nSTATEMENT\n fails, the squish will not fail and abort.\n\n\nThe second usage is to \nTRY\n the first \nSTATEMENT\n and, if it fails, attempt the next \nELSE\n \nSTATEMENT(s)\n until one of them succeeds. If the \nEND\n keyword is reached, however, the squish will fail and abort.\n\n\nOnly one \nSTATEMENT\n per \nTRY\n/\nELSE\n clause is possible.", 
+            "text": "TRY\n\n\nUsage\n\n\nTRY\n \nSTATEMENT\n;  \n\n\nTRY\n \nSTATEMENT\n; \nELSE\n \nSTATEMENT\n; [\nELSE\n \nSTATEMENT\n;] \nEND\n;\n\n\nDescription\n\n\nThe \nTRY \nstatement can be used to either specify an optional, non-critical \nSTATEMENT\n or to specify a series of alternative \nSTATEMENT(s)\n to perform should the previous fail. Note that only one \nSTATEMENT\n per \nTRY\n/\nELSE\n clause is possible.\n1\n\n\nThe first form is using \nTRY\n as a prefix for other \nSTATEMENT\ns to make them optional. That is, if the \nSTATEMENT\n fails, the Squish will not fail/abort. It will however log a warning if Squishy is running in verbose mode.\n\n\nThe second form is the multiple clause form. \nTRY\n will perform the first \nSTATEMENT\n and, if it fails, attempt the next \nELSE\n \nSTATEMENT(s)\n until one of them succeeds. If the \nEND\n keyword is reached, however, the squish will fail and abort.\n\n\n\n\n\n\n\n\n\n\nThis is an intentional design choice. It may be relaxed in future if a convincing case can be found.", 
             "title": "TRY"
         }, 
         {
@@ -32,12 +47,12 @@
         }, 
         {
             "location": "/script-reference/flow-control/try/#usage", 
-            "text": "TRY   STATEMENT;  TRY   STATEMENT;  ELSE   STATEMENT; *[ ELSE   STATEMENT; ]  END *", 
+            "text": "TRY   STATEMENT ;    TRY   STATEMENT ;  ELSE   STATEMENT ; [ ELSE   STATEMENT ;]  END ;", 
             "title": "Usage"
         }, 
         {
             "location": "/script-reference/flow-control/try/#description", 
-            "text": "The  TRY  statement can be used to either specify an optional, non-critical  STATEMENT  or to specify a series of alternative  STATEMENT(s)  to perform should the previous fail.  The first usage form is a simple prefix to perform optional statements. If  STATEMENT  fails, the squish will not fail and abort.  The second usage is to  TRY  the first  STATEMENT  and, if it fails, attempt the next  ELSE   STATEMENT(s)  until one of them succeeds. If the  END  keyword is reached, however, the squish will fail and abort.  Only one  STATEMENT  per  TRY / ELSE  clause is possible.", 
+            "text": "The  TRY  statement can be used to either specify an optional, non-critical  STATEMENT  or to specify a series of alternative  STATEMENT(s)  to perform should the previous fail. Note that only one  STATEMENT  per  TRY / ELSE  clause is possible. 1  The first form is using  TRY  as a prefix for other  STATEMENT s to make them optional. That is, if the  STATEMENT  fails, the Squish will not fail/abort. It will however log a warning if Squishy is running in verbose mode.  The second form is the multiple clause form.  TRY  will perform the first  STATEMENT  and, if it fails, attempt the next  ELSE   STATEMENT(s)  until one of them succeeds. If the  END  keyword is reached, however, the squish will fail and abort.      This is an intentional design choice. It may be relaxed in future if a convincing case can be found.", 
             "title": "Description"
         }
     ]
