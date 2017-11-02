@@ -1,6 +1,9 @@
 site_name: Squishy
 pages:
 - Home: index.md
+- 'Script Reference':
+    - 'Flow Control':
+        - 'TRY': 'script-reference/flow-control/try.md'
 site_author: Daniel 'CosmicDan' Connolly
 repo_url: https://github.com/cosmicdan/Squishy/
 theme: readthedocs
